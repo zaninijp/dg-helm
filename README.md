@@ -1,4 +1,4 @@
-# PingDirectory
+# PingDataGovernance
 
 Remember to add the repo before installing the chart
 ```shell
@@ -10,26 +10,26 @@ In a development or sandbox environment, the helm chart can be run with a valid 
 
 ```shell
 helm install \
-pingdirectory --debug \
+pingdatagov --debug \
 --set license.useDevOpsKey=true \
 --set license.devOpsKey.user=${PING_IDENTITY_DEVOPS_USER} \
 --set license.devOpsKey.key=${PING_IDENTITY_DEVOPS_KEY} \
 --set license.acceptEULA=yes \
 --set persistentvolume.enabled=false \
-pingidentity-pc/pingdirectory
+pingidentity-pc/pingdatagov
 ```
 
 ## Use provided License file
 In a controlled environment, the helm chart can be run with a valid license file.  Add the license file as a secret as shown:
 ```shell
 
-kubectl create secret generic pingdirectory-license --from-file ./pingdirectory.lic
+kubectl create secret generic pingdatagov-license --from-file ./pingdatagov.lic
 
 helm install \
-pingdirectory --debug \
+pingdatagovernance --debug \
 --set license.licenseSecretName=pingdirectory-license \
 --set license.acceptEULA=yes \
-pingidentity-pc/pingdirectory
+pingidentity-pc/pingdatagovernance
 ```
 
 ## Chart Configuration
@@ -38,7 +38,7 @@ pingidentity-pc/pingdirectory
 |--|--|--|
 | TODO | TODO | TODO |
 
-## PingDirectory Configuration Profile
+## PingDataGovernance Configuration Profile
 
 By default this chart loads sample PingDirectory configuration on startup.  These are layered as:
 
