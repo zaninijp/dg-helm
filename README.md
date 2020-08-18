@@ -27,7 +27,7 @@ kubectl create secret generic pingdatagov-license --from-file ./pingdatagov.lic
 
 helm install \
 pingdatagovernance --debug \
---set license.licenseSecretName=pingdirectory-license \
+--set license.licenseSecretName=pingdatagovernance-license \
 --set license.acceptEULA=yes \
 pingidentity-pc/pingdatagovernance
 ```
@@ -40,10 +40,10 @@ pingidentity-pc/pingdatagovernance
 
 ## PingDataGovernance Configuration Profile
 
-By default this chart loads sample PingDirectory configuration on startup.  These are layered as:
+By default this chart loads sample PingDataGov configuration on startup.  These are layered as:
 
 | Configuration Layer | Server Profile |
 |--|--|
-| 1 | https://github.com/pingidentity/pingidentity-server-profiles/tree/master/getting-started/pingdirectory |
+| 1 | https://github.com/pingidentity/pingidentity-server-profiles/tree/master/getting-started/pingdatagovernance |
 
-You can add additional layers or change to your own configuration repository by modifying the `SERVER_PROFILE_*` environment variables in `pingdirectory.envs` of the chart configuration
+You can add additional layers or change to your own configuration repository by modifying the `SERVER_PROFILE_*` environment variables in `pingdatagov.envs` of the chart configuration
