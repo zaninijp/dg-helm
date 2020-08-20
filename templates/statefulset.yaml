@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "pingdirectory.fullname" . }}
+  name: {{ include "pingdatagovernance.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "pingdirectory.name" . }}
-    helm.sh/chart: {{ include "pingdirectory.chart" . }}
+    app.kubernetes.io/name: {{ include "pingdatagovernance.name" . }}
+    helm.sh/chart: {{ include "pingdatagovernance.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
@@ -12,7 +12,7 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "pingdirectory.name" . }}
+      app.kubernetes.io/name: {{ include "pingdatagovernance.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   updateStrategy:
     type: RollingUpdate
@@ -20,7 +20,7 @@ spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "pingdirectory.name" . }}
+        app.kubernetes.io/name: {{ include "pingdatagovernance.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       terminationGracePeriodSeconds: 300
@@ -37,8 +37,8 @@ spec:
         {{- end }}
         {{- if not .Values.license.useDevOpsKey }}
         - name: license
-          mountPath: /opt/in/instance/pingdirectory.lic
-          subPath: pingdirectory.lic
+          mountPath: /opt/in/instance/pingdatagovernance.lic
+          subPath: pingdatagovernance.lic
         {{- end }}
         ports:
         - containerPort: {{ .Values.service.https.port }}
@@ -49,12 +49,12 @@ spec:
           name: {{ .Values.service.ldap.name }}
         envFrom:
         - configMapRef:
-            name: {{ include "pingdirectory.fullname" . }}-env-vars
+            name: {{ include "pingdatagovernance.fullname" . }}-env-vars
         - secretRef:
-            name: {{ include "pingdirectory.fullname" . }}-devops-secret
+            name: {{ include "pingdatagovernance.fullname" . }}-devops-secret
             optional: true
         - secretRef:
-            name: {{ include "pingdirectory.fullname" . }}-git-secret
+            name: {{ include "pingdatagovernance.fullname" . }}-git-secret
             optional: true
         readinessProbe:
           exec:

@@ -10,20 +10,20 @@ In a development or sandbox environment, the helm chart can be run with a valid 
 
 ```shell
 helm install \
-pingdatagov --debug \
+pingdatagovernance --debug \
 --set license.useDevOpsKey=true \
 --set license.devOpsKey.user=${PING_IDENTITY_DEVOPS_USER} \
 --set license.devOpsKey.key=${PING_IDENTITY_DEVOPS_KEY} \
 --set license.acceptEULA=yes \
 --set persistentvolume.enabled=false \
-pingidentity-pc/pingdatagov
+pingidentity-pc/pingdatagovernance
 ```
 
 ## Use provided License file
 In a controlled environment, the helm chart can be run with a valid license file.  Add the license file as a secret as shown:
 ```shell
 
-kubectl create secret generic pingdatagov-license --from-file ./pingdatagov.lic
+kubectl create secret generic pingdatagovernance-license --from-file ./pingdatagovernance.lic
 
 helm install \
 pingdatagovernance --debug \
@@ -46,4 +46,4 @@ By default this chart loads sample PingDataGov configuration on startup.  These 
 |--|--|
 | 1 | https://github.com/pingidentity/pingidentity-server-profiles/tree/master/getting-started/pingdatagovernance |
 
-You can add additional layers or change to your own configuration repository by modifying the `SERVER_PROFILE_*` environment variables in `pingdatagov.envs` of the chart configuration
+You can add additional layers or change to your own configuration repository by modifying the `SERVER_PROFILE_*` environment variables in `pingdatagovernance.envs` of the chart configuration

@@ -1,12 +1,12 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "pingdirectory.fullname" . -}}
+{{- $fullName := include "pingdatagovernance.fullname" . -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    app.kubernetes.io/name: {{ include "pingdirectory.name" . }}
-    helm.sh/chart: {{ include "pingdirectory.chart" . }}
+    app.kubernetes.io/name: {{ include "pingdatagovernance.name" . }}
+    helm.sh/chart: {{ include "pingdatagovernance.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   {{- with .Values.ingress.annotations }}

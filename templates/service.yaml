@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ if .Values.service.customName }}{{ .Values.service.customName }}{{- else }}{{ include "pingdirectory.fullname" . }}{{- end }}
+  name: {{ if .Values.service.customName }}{{ .Values.service.customName }}{{- else }}{{ include "pingdatagovernance.fullname" . }}{{- end }}
   labels:
-    app.kubernetes.io/name: {{ include "pingdirectory.name" . }}
-    helm.sh/chart: {{ include "pingdirectory.chart" . }}
+    app.kubernetes.io/name: {{ include "pingdatagovernance.name" . }}
+    helm.sh/chart: {{ include "pingdatagovernance.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
@@ -23,5 +23,5 @@ spec:
       protocol: TCP
       name: {{ .Values.service.ldap.name }}
   selector:
-    app.kubernetes.io/name: {{ include "pingdirectory.name" . }}
+    app.kubernetes.io/name: {{ include "pingdatagovernance.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}

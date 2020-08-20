@@ -1,4 +1,4 @@
-# Default values for pingdirectory.
+# Default values for pingdatagovernance.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -6,24 +6,24 @@ replicaCount: 1
 
 image:
   repository: pingidentity
-  name: pingdirectory
+  name: pingdatagovernance
   tag: 2006-8.1.0.0
   pullPolicy: IfNotPresent
   readinessCommand: /opt/liveness.sh
   livenessCommand: /opt/liveness.sh
 
-pingdirectory:
+pingdatagovernance:
   logging: INFO
 
   envs:
     SERVER_PROFILE_URL: https://github.com/pingidentity/pingidentity-server-profiles.git 
-    SERVER_PROFILE_PATH: getting-started/pingdirectory
+    SERVER_PROFILE_PATH: getting-started/pingdatagovernance
     SERVER_PROFILE_BRANCH: master
     MAX_HEAP_SIZE: 768m
   
 license:
   acceptEULA: false
-  licenseSecretName: pingdirectory-license
+  licenseSecretName: pingdatagovernance-license
   # Using the devops key is best suited to development or sandbox environments.  In other cases create a license secret
   useDevOpsKey: false
   devOpsKey:
