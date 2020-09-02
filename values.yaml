@@ -34,7 +34,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 service:
-  customName: pingdirectory
+  customName: pingdatagovernance
   type: ClusterIP
   https:
     port: 443
